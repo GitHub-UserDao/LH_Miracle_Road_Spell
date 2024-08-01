@@ -1,21 +1,23 @@
 package dev.lhkongyu.lhmiracleroadspell.items;
 
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.burningFlames.bigFireball.BigFireballProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.burningFlames.blazeBomb.BlazeBombProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.burningFlames.blazeBurn.BlazeBurn;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.burningFlames.burningFlames.BurningFlamesProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.burningFlames.destructionFlame.DestructionFlameProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.burningFlames.fireball.FireballProjectile;
-import dev.lhkongyu.lhmiracleroadspell.registry.ItemsRegistry;
-import dev.lhkongyu.lhmiracleroadspell.registry.ParticleRegistry;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.ReleaseFlamesSpellTool;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.annihilatorMeteor.AnnihilatorMeteorProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.bigFireball.BigFireballProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.blazeBomb.BlazeBombProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.blazePurification.BlazePurification;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.burningFlames.BurningFlamesProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.destructionFlame.DestructionFlameProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.evilGodFlame.EvilGodFlameProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.fireball.FireballProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flameDevouring.FlameDevouring;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flameDevouring.FlameDevouringProjectile;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flamePower.FlamePower;
+import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.ignitesFire.IgnitesFire;
 import dev.lhkongyu.lhmiracleroadspell.tool.LHMiracleRoadSpellTool;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -100,160 +102,22 @@ public class SpellItem extends Item {
 //        }
 
         fireProjectile(level,player,itemStack.getDescriptionId());
-//        spellDestructionFlame(level,player);
-//        createFireField(level,player);
-//        releaseBlazeBurn(level,player);
         return InteractionResultHolder.sidedSuccess(itemStack,level.isClientSide());
     }
 
     private static void fireProjectile(Level level, Player player, String itemId){
-        String fireball = ItemsRegistry.FIREBALL.get().getDescriptionId();
-        if (itemId.equals(fireball)){
-            spellFireball(level,player);
-        }
-
-        String blaze_bomb = ItemsRegistry.BLAZE_BOMB.get().getDescriptionId();
-        if (itemId.equals(blaze_bomb)){
-            spellBlazeBomb(level,player);
-        }
-
-        String big_fireball = ItemsRegistry.BIG_FIREBALL.get().getDescriptionId();
-        if (itemId.equals(big_fireball)){
-            spellBigFireball(level,player);
-        }
-    }
-
-    /**
-     * 发射火球术
-     * @param level
-     * @param player
-     */
-    private static void spellFireball(Level level, Player player){
-        FireballProjectile fireball = new FireballProjectile(level,player);
-        // 获取玩家的视线方向
-        Vec3 lookVec = player.getViewVector(1.0F);
-        // 计算出发射位置：在玩家眼睛的位置基础上，沿着视线方向前进一定距离（例如 1.0 个单位）
-        Vec3 startPosition = player.getEyePosition(1.0F).add(lookVec.scale(1.5)).subtract(0, 0.4, 0);
-        // 将火球的位置设置到这个起始位置
-        fireball.setPos(startPosition);
-        // 设置火球的射击方向
-        fireball.shoot(lookVec.x, lookVec.y, lookVec.z, 1.5f, 0.0f); // 第五个参数为发射速度，第六个参数为发射精度
-        // 设置火球的伤害值
-        fireball.setDamage(10);
-        //设置伤害范围
-        fireball.setRange(2);
-        // 设置重量值
-        fireball.setGravity(0.03);
-        level.addFreshEntity(fireball);
-    }
-
-    /**
-     * 发射烈焰爆弹
-     * @param level
-     * @param player
-     */
-    private static void spellBlazeBomb(Level level, Player player){
-        BlazeBombProjectile blazeBomb = new BlazeBombProjectile(level,player);
-        // 获取玩家的视线方向
-        Vec3 lookVec = player.getViewVector(1.0F);
-        // 计算出发射位置：在玩家眼睛的位置基础上，沿着视线方向前进一定距离（例如 1.0 个单位）
-        Vec3 startPosition = player.getEyePosition(1.0F).add(lookVec.scale(1.0)).subtract(0, 0.4, 0);
-        // 设置起始位置
-        blazeBomb.setPos(startPosition);
-        // 设置射击方向
-        blazeBomb.shoot(lookVec.x, lookVec.y, lookVec.z, 1.5f, 0.0f); // 第五个参数为发射速度，第六个参数为发射精度
-        // 设置基础伤害值
-        blazeBomb.setDamage(10);
-        // 设置重量值
-        blazeBomb.setGravity(0.03);
-        level.addFreshEntity(blazeBomb);
-    }
-
-    /**
-     * 发射大火球术
-     * @param level
-     * @param player
-     */
-    private static void spellBigFireball(Level level, Player player){
-        BigFireballProjectile bigFireball = new BigFireballProjectile(level,player);
-        // 获取玩家的视线方向
-        Vec3 lookVec = player.getViewVector(1.0F);
-        // 计算出发射位置：在玩家眼睛的位置基础上，沿着视线方向前进一定距离（例如 1.0 个单位）
-        Vec3 startPosition = player.getEyePosition(1.0F).add(lookVec.scale(2.5)).subtract(0, 0.4, 0);
-        // 设置起始位置
-        bigFireball.setPos(startPosition);
-        // 设置射击方向
-        bigFireball.shoot(lookVec.x, lookVec.y, lookVec.z, 1.4f, 0.0f); // 第五个参数为发射速度，第六个参数为发射精度
-        // 设置基础伤害值
-        bigFireball.setDamage(25);
-        //设置伤害范围
-        bigFireball.setRange(6);
-        // 设置重量值
-        bigFireball.setGravity(0.035);
-        level.addFreshEntity(bigFireball);
-    }
-
-    /**
-     * 发射毁灭烈火
-     * @param level
-     * @param player
-     */
-    private static void spellDestructionFlame(Level level, Player player){
-        DestructionFlameProjectile destructionFlame = new DestructionFlameProjectile(level,player);
-        // 获取玩家的视线方向
-        Vec3 lookVec = player.getViewVector(1.0F);
-        // 计算出发射位置：在玩家眼睛的位置基础上，沿着视线方向前进一定距离（例如 1.0 个单位）
-        Vec3 startPosition = player.getEyePosition(1.0F).add(lookVec.scale(1.0)).subtract(0, 0.4, 0);
-        // 设置起始位置
-        destructionFlame.setPos(startPosition);
-        // 设置射击方向
-        destructionFlame.shoot(lookVec.x, lookVec.y, lookVec.z, 0.1f, 0.0f); // 第五个参数为发射速度，第六个参数为发射精度
-        // 设置基础伤害值
-        destructionFlame.setDamage(25);
-        //设置伤害范围
-        destructionFlame.setRange(3);
-        level.addFreshEntity(destructionFlame);
-    }
-
-    /**
-     * 释放 爆裂火海
-     * @param level
-     * @param player
-     */
-    private static void createFireField(Level level,Player player){
-        if (!level.isClientSide) {
-            // 获取玩家的视线命中的目标
-            HitResult hitResult = LHMiracleRoadSpellTool.playerMousePointObject(player,32);
-
-            Vec3 lookVec = null;
-            if (hitResult.getType() == HitResult.Type.ENTITY){
-                lookVec = hitResult.getLocation().add(0,-1,0);
-            }else {
-                lookVec = hitResult.getLocation();
-            }
-            BurningFlamesProjectile fire = new BurningFlamesProjectile(level,lookVec,player,12,5,3,4);
-            fire.setDuration(240);
-            level.addFreshEntity(fire);
-        }
-    }
-
-    /**
-     * 释放 烈火焚净
-     * @param level
-     * @param player
-     */
-    private static void releaseBlazeBurn(Level level,Player player){
-        if (!level.isClientSide) {
-            // 获取玩家的视线命中的目标
-            HitResult hitResult = LHMiracleRoadSpellTool.playerMousePointObject(player,32);
-            EntityHitResult entityHitResult = null;
-            if (hitResult.getType() == HitResult.Type.ENTITY){
-                entityHitResult = (EntityHitResult) hitResult;
-            }else {
-                player.sendSystemMessage(Component.translatable("lhmiracleroadspell.spell.blaze_burn.prompt").withStyle(ChatFormatting.RED));
-                return;
-            }
-            BlazeBurn.burnTarget((ServerLevel) level, (ServerPlayer) player,entityHitResult,8f,6);
+        switch (itemId) {
+            case "item.lhmiracleroadspell.fireball" -> ReleaseFlamesSpellTool.spellFireball(level,player);
+            case "item.lhmiracleroadspell.blaze_bomb" -> ReleaseFlamesSpellTool.spellBlazeBomb(level,player);
+            case "item.lhmiracleroadspell.big_fireball" -> ReleaseFlamesSpellTool.spellBigFireball(level,player);
+            case "item.lhmiracleroadspell.blaze_purification" -> ReleaseFlamesSpellTool.releaseBlazePurification(level,player);
+            case "item.lhmiracleroadspell.burning_flames" -> ReleaseFlamesSpellTool.releaseBurningFlames(level,player);
+            case "item.lhmiracleroadspell.destruction_flame" -> ReleaseFlamesSpellTool.spellDestructionFlame(level,player);
+            case "item.lhmiracleroadspell.flame_power" -> FlamePower.playerAddFlamePower(level,player);
+            case "item.lhmiracleroadspell.ignites_fire" -> IgnitesFire.releaseIgnitesFire(level,player);
+            case "item.lhmiracleroadspell.flame_devouring" -> FlameDevouring.releaseFlameDevouring(level,player);
+            case "item.lhmiracleroadspell.evil_god_flame" -> ReleaseFlamesSpellTool.spellEvilGodFlame(level,player);
+            case "item.lhmiracleroadspell.annihilator_meteor" -> ReleaseFlamesSpellTool.releaseSpellAnnihilatorMeteor(level,player);
         }
     }
 }

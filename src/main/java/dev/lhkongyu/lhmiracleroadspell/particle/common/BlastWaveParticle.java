@@ -2,11 +2,11 @@ package dev.lhkongyu.lhmiracleroadspell.particle.common;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import dev.lhkongyu.lhmiracleroadspell.particle.CommonParticleOptions;
 import net.minecraft.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,7 +25,7 @@ public class BlastWaveParticle extends TextureSheetParticle {
 
     private final boolean isPlane;
 
-    BlastWaveParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double xd, double yd, double zd, BlastWaveParticleOptions options) {
+    BlastWaveParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double xd, double yd, double zd, CommonParticleOptions options) {
         super(pLevel, pX, pY, pZ, 0, 0, 0);
 
         this.xd = xd;
@@ -133,18 +133,18 @@ public class BlastWaveParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<BlastWaveParticleOptions> {
+    public static class Provider implements ParticleProvider<CommonParticleOptions> {
         private final SpriteSet sprite;
 
         public Provider(SpriteSet pSprite) {
             this.sprite = pSprite;
         }
 
-        public Particle createParticle(@NotNull BlastWaveParticleOptions options, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-            BlastWaveParticle shriekparticle = new BlastWaveParticle(pLevel, pX, pY, pZ, sprite, pXSpeed, pYSpeed, pZSpeed, options);
-            shriekparticle.setSpriteFromAge(this.sprite);
-            shriekparticle.setAlpha(1.0F);
-            return shriekparticle;
+        public Particle createParticle(@NotNull CommonParticleOptions options, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
+            BlastWaveParticle blastWaveParticle = new BlastWaveParticle(pLevel, pX, pY, pZ, sprite, pXSpeed, pYSpeed, pZSpeed, options);
+            blastWaveParticle.setSpriteFromAge(this.sprite);
+            blastWaveParticle.setAlpha(1.0F);
+            return blastWaveParticle;
         }
     }
 

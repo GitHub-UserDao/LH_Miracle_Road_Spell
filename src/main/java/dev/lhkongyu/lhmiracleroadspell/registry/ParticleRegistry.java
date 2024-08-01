@@ -2,7 +2,7 @@ package dev.lhkongyu.lhmiracleroadspell.registry;
 
 import com.mojang.serialization.Codec;
 import dev.lhkongyu.lhmiracleroadspell.LHMiracleRoadSpell;
-import dev.lhkongyu.lhmiracleroadspell.particle.common.BlastWaveParticleOptions;
+import dev.lhkongyu.lhmiracleroadspell.particle.CommonParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,9 +22,15 @@ public class ParticleRegistry {
 
     public static final RegistryObject<SimpleParticleType> FLAME_PARTICLE = PARTICLE_TYPES.register("flame", () -> new SimpleParticleType(false));
 
-    public static final RegistryObject<ParticleType<BlastWaveParticleOptions>> BLAST_WAVE_PARTICLE = PARTICLE_TYPES.register("blast_wave", () -> new ParticleType<BlastWaveParticleOptions>(true, BlastWaveParticleOptions.DESERIALIZER) {
-        public Codec<BlastWaveParticleOptions> codec() {
-            return BlastWaveParticleOptions.CODEC;
+    public static final RegistryObject<ParticleType<CommonParticleOptions>> BLAST_WAVE_PARTICLE = PARTICLE_TYPES.register("blast_wave", () -> new ParticleType<CommonParticleOptions>(true, CommonParticleOptions.DESERIALIZER) {
+        public Codec<CommonParticleOptions> codec() {
+            return CommonParticleOptions.CODEC;
+        }
+    });
+
+    public static final RegistryObject<ParticleType<CommonParticleOptions>> FIRE_EXPLOSION_PARTICLE = PARTICLE_TYPES.register("fire_explosion", () -> new ParticleType<CommonParticleOptions>(true, CommonParticleOptions.DESERIALIZER) {
+        public Codec<CommonParticleOptions> codec() {
+            return CommonParticleOptions.CODEC;
         }
     });
 

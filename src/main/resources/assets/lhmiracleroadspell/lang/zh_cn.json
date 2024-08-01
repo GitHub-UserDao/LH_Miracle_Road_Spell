@@ -1,7 +1,21 @@
 {
   "itemGroup.lhmiracleroadspell.items": "奇迹之路 法术篇",
+  "lhmiracleroadspell.spell.blaze_burn.prompt": "未选中目标",
+
+  "attribute.name.lhmiracleroadspell.flame_damage": "火焰伤害",
+
   "item.lhmiracleroadspell.fireball": "火球术",
   "item.lhmiracleroadspell.big_fireball": "大火球术",
   "item.lhmiracleroadspell.blaze_bomb": "烈焰爆弹",
-  "lhmiracleroadspell.spell.blaze_burn.prompt": "未选中目标"
+  "item.lhmiracleroadspell.blaze_purification": "烈火焚净",
+  "item.lhmiracleroadspell.burning_flames": "爆裂火海",
+  "item.lhmiracleroadspell.destruction_flame": "毁灭烈火",
+  "item.lhmiracleroadspell.flame_power": "火焰啊！赐予我力量！",
+  "item.lhmiracleroadspell.ignites_fire": "燃火",
+  "item.lhmiracleroadspell.flame_devouring": "火焰吞噬",
+  "item.lhmiracleroadspell.evil_god_flame": "恶神火焰",
+  "item.lhmiracleroadspell.annihilator_meteor": "送葬者的流星",
+
+  "effect.lhmiracleroadspell.burning_armor": "焚甲",
+  "effect.lhmiracleroadspell.flame_power": "火焰啊！赐予我力量！"
 }

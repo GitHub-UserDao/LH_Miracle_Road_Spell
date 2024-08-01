@@ -1,7 +1,21 @@
 {
   "itemGroup.lhmiracleroadspell.items": "miracle road spell",
-  "item.lhmiracleroadspell.fireball": "fireball",
-  "item.lhmiracleroadspell.big_fireball": "big fireball",
-  "item.lhmiracleroadspell.blaze_bomb": "blaze bomb",
-  "lhmiracleroadspell.spell.blaze_burn.prompt": "No target selected"
+  "lhmiracleroadspell.spell.blaze_burn.prompt": "No target selected",
+
+  "attribute.name.lhmiracleroadspell.flame_damage": "flame damage",
+
+  "item.lhmiracleroadspell.fireball": "Fireball",
+  "item.lhmiracleroadspell.big_fireball": "Big Fireball",
+  "item.lhmiracleroadspell.blaze_bomb": "Blaze Bomb",
+  "item.lhmiracleroadspell.blaze_purification": "Blaze purification",
+  "item.lhmiracleroadspell.burning_flames": "Burst a sea of fire",
+  "item.lhmiracleroadspell.destruction_flame": "Destruction Flame",
+  "item.lhmiracleroadspell.flame_power": "The flames! Give me strength!",
+  "item.lhmiracleroadspell.ignites_fire": "Ignites Fire",
+  "item.lhmiracleroadspell.flame_devouring": "Flame Devouring",
+  "item.lhmiracleroadspell.evil_god_flame": "Evil God Flame",
+  "item.lhmiracleroadspell.annihilator_meteor": "Annihilator'S Meteor",
+
+  "effect.lhmiracleroadspell.burning_armor": "Burning Armor",
+  "effect.lhmiracleroadspell.flame_power": "The flames! Give me strength!"
 }

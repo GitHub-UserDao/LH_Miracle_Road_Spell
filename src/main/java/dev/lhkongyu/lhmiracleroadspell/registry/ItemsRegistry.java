@@ -18,6 +18,22 @@ public class ItemsRegistry {
 
     public static final RegistryObject<Item> BLAZE_BOMB = ITEMS.register("blaze_bomb", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
 
+    public static final RegistryObject<Item> BLAZE_PURIFICATION = ITEMS.register("blaze_purification", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> BURNING_FLAMES = ITEMS.register("burning_flames", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> DESTRUCTION_FLAME = ITEMS.register("destruction_flame", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> FLAME_POWER = ITEMS.register("flame_power", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> IGNITES_FIRE = ITEMS.register("ignites_fire", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> FLAME_DEVOURING = ITEMS.register("flame_devouring", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> EVIL_GOD_FLAME = ITEMS.register("evil_god_flame", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> ANNIHILATOR_METEOR = ITEMS.register("annihilator_meteor", () -> new SpellItem(new Item.Properties().rarity(Rarity.COMMON)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

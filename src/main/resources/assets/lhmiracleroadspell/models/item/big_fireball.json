@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0" : "lhmiracleroadspell:item/big_fireball"
+    "layer0" : "lhmiracleroadspell:item/scroll/flame/big_fireball"
   }
 }
