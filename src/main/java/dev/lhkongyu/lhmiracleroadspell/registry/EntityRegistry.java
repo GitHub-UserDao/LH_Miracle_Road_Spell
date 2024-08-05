@@ -1,17 +1,18 @@
 package dev.lhkongyu.lhmiracleroadspell.registry;
 
 import dev.lhkongyu.lhmiracleroadspell.LHMiracleRoadSpell;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.CommonAoeProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.annihilatorMeteor.AnnihilatorMeteorProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.bigFireball.BigFireballProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.bigFireball.SuperBigFireballProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.blazeBomb.BlazeBombProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.burningFlames.BurningFlamesProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.destructionFlame.DestructionFlameProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.evilGodFlame.EvilGodFlameProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flameDevouring.FlameDevouringProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.textFireBall.FireballProjectileTest;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.fireball.FireballProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.fireball.BigFireballProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.CommonAoeProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.annihilatorMeteor.AnnihilatorMeteorProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.fireMeteor.FireMeteorProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.fireMeteor.BigFireMeteorProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.blazeBomb.BlazeBombProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.burningFlames.BurningFlamesProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.destructionFlame.DestructionFlameProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.evilGodFlame.EvilGodFlameProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.flameDevouring.FlameDevouringProjectile;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.textFireBall.FireballProjectileTest;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.fireball.FireballProjectile;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -29,23 +30,30 @@ public class EntityRegistry {
     //火球术实体
     public static final RegistryObject<EntityType<FireballProjectile>> FIREBALL_PROJECTILE =
             ENTITIES.register("fireball", () -> EntityType.Builder.<FireballProjectile>of(FireballProjectile::new, MobCategory.MISC)
-                    .sized(0.5f, 0.5f)
+                    .sized(0.6f, 0.6f)
                     .clientTrackingRange(64)
                     .build(new ResourceLocation(LHMiracleRoadSpell.MODID, "fireball").toString()));
 
-    //大火球术实体
-    public static final RegistryObject<EntityType<BigFireballProjectile>> BIG_FIREBALL_PROJECTILE =
-            ENTITIES.register("big_fireball", () -> EntityType.Builder.<BigFireballProjectile>of(BigFireballProjectile::new, MobCategory.MISC)
+    //大火球术实体 测试版本
+    public static final RegistryObject<EntityType<BigFireballProjectile>> TEST_FIREBALL =
+            ENTITIES.register("test_fireball", () -> EntityType.Builder.<BigFireballProjectile>of(BigFireballProjectile::new, MobCategory.MISC)
                     .sized(1.5f, 1.5f)
                     .clientTrackingRange(64)
-                    .build(new ResourceLocation(LHMiracleRoadSpell.MODID, "big_fireball").toString()));
+                    .build(new ResourceLocation(LHMiracleRoadSpell.MODID, "test_fireball").toString()));
 
-    //大火球术实体
-    public static final RegistryObject<EntityType<SuperBigFireballProjectile>> SUPER_BIG_FIREBALL_PROJECTILE =
-            ENTITIES.register("super_big_fireball", () -> EntityType.Builder.<SuperBigFireballProjectile>of(SuperBigFireballProjectile::new, MobCategory.MISC)
+    //火焰流星实体
+    public static final RegistryObject<EntityType<FireMeteorProjectile>> FIRE_METEOR_PROJECTILE =
+            ENTITIES.register("fire_meteor", () -> EntityType.Builder.<FireMeteorProjectile>of(FireMeteorProjectile::new, MobCategory.MISC)
                     .sized(1.5f, 1.5f)
                     .clientTrackingRange(64)
-                    .build(new ResourceLocation(LHMiracleRoadSpell.MODID, "super_big_fireball").toString()));
+                    .build(new ResourceLocation(LHMiracleRoadSpell.MODID, "fire_meteor").toString()));
+
+    //大火焰流星实体
+    public static final RegistryObject<EntityType<BigFireMeteorProjectile>> BIG_FIRE_METEOR_PROJECTILE =
+            ENTITIES.register("big_fire_meteor", () -> EntityType.Builder.<BigFireMeteorProjectile>of(BigFireMeteorProjectile::new, MobCategory.MISC)
+                    .sized(1.5f, 1.5f)
+                    .clientTrackingRange(64)
+                    .build(new ResourceLocation(LHMiracleRoadSpell.MODID, "big_fire_meteor").toString()));
 
     //烈焰爆弹实体
     public static final RegistryObject<EntityType<BlazeBombProjectile>> BLAZE_BOMB_PROJECTILE =

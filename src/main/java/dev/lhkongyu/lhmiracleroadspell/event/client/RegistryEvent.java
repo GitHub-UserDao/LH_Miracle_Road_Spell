@@ -1,11 +1,13 @@
 package dev.lhkongyu.lhmiracleroadspell.event.client;
 
 import dev.lhkongyu.lhmiracleroadspell.LHMiracleRoadSpell;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.annihilatorMeteor.AnnihilatorMeteorRenderer;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.bigFireball.BigFireballRenderer;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.blazeBomb.BlazeBombRenderer;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.destructionFlame.DestructionFlameRenderer;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.evilGodFlame.EvilGodFlameRenderer;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.annihilatorMeteor.AnnihilatorMeteorRenderer;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.destructionFlame.DestructionFlameRenderer;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.fireball.FireballRenderer;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.fireMeteor.FireMeteorRenderer;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.blazeBomb.BlazeBombRenderer;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.destructionFlame.DestructionFlameRendererPast;
+import dev.lhkongyu.lhmiracleroadspell.spell.entity.renderer.flames.evilGodFlame.EvilGodFlameRenderer;
 import dev.lhkongyu.lhmiracleroadspell.particle.common.BlastWaveParticle;
 import dev.lhkongyu.lhmiracleroadspell.particle.fire.*;
 import dev.lhkongyu.lhmiracleroadspell.registry.EntityRegistry;
@@ -40,9 +42,10 @@ public class RegistryEvent {
 
         //火焰魔法实体注册
         event.registerEntityRenderer(EntityRegistry.BLAZE_BOMB_PROJECTILE.get(), BlazeBombRenderer::new);
-        event.registerEntityRenderer(EntityRegistry.BIG_FIREBALL_PROJECTILE.get(), (context) -> new BigFireballRenderer(context, 2f));
-        event.registerEntityRenderer(EntityRegistry.FIREBALL_PROJECTILE.get(), (context) -> new BigFireballRenderer(context, 1f));
-        event.registerEntityRenderer(EntityRegistry.SUPER_BIG_FIREBALL_PROJECTILE.get(), (context) -> new BigFireballRenderer(context, 3f));
+        event.registerEntityRenderer(EntityRegistry.TEST_FIREBALL.get(), (context) -> new FireballRenderer(context, 2f));
+        event.registerEntityRenderer(EntityRegistry.FIREBALL_PROJECTILE.get(), (context) -> new FireballRenderer(context, 1.25f));
+        event.registerEntityRenderer(EntityRegistry.FIRE_METEOR_PROJECTILE.get(), (context) -> new FireMeteorRenderer(context, 2f));
+        event.registerEntityRenderer(EntityRegistry.BIG_FIRE_METEOR_PROJECTILE.get(), (context) -> new FireMeteorRenderer(context, 3f));
         event.registerEntityRenderer(EntityRegistry.DESTRUCTION_FLAME.get(), (context) -> new DestructionFlameRenderer(context, 0.25f));
         event.registerEntityRenderer(EntityRegistry.BURNING_FLAMES.get(), NoopRenderer::new);
         event.registerEntityRenderer(EntityRegistry.FLAME_DEVOURING.get(), NoopRenderer::new);
@@ -55,8 +58,8 @@ public class RegistryEvent {
 
     @SubscribeEvent
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(BigFireballRenderer.MODEL_LAYER_LOCATION, BigFireballRenderer::createBodyLayer);
-        event.registerLayerDefinition(DestructionFlameRenderer.MODEL_LAYER_LOCATION, DestructionFlameRenderer::createBodyLayer);
+        event.registerLayerDefinition(FireMeteorRenderer.MODEL_LAYER_LOCATION, FireMeteorRenderer::createBodyLayer);
+        event.registerLayerDefinition(DestructionFlameRendererPast.MODEL_LAYER_LOCATION, DestructionFlameRendererPast::createBodyLayer);
         event.registerLayerDefinition(EvilGodFlameRenderer.MODEL_LAYER_LOCATION, EvilGodFlameRenderer::createBodyLayer);
     }
 }

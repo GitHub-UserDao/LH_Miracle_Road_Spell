@@ -87,6 +87,20 @@ public class LHMiracleRoadSpellTool {
         return BlockHitResult.miss(endPos, Direction.UP, BlockPos.containing(endPos));
     }
 
+    public static HitResult playerMousePointBlock(LivingEntity livingEntity, double endDistance){
+        Level level = livingEntity.level();
+        Vec3 startPos = livingEntity.getEyePosition(1f);
+        Vec3 endPos = livingEntity.getLookAngle().normalize().scale(endDistance).add(startPos);
+
+        // 进行射线检测，获取玩家鼠标指针指向的方块
+        HitResult hitResult = level.clip(new ClipContext(startPos, endPos, ClipContext.Block.OUTLINE, ClipContext.Fluid.ANY, livingEntity));
+         if (hitResult.getType() == HitResult.Type.BLOCK) {
+            return hitResult;
+        }
+
+        return BlockHitResult.miss(endPos, Direction.UP, BlockPos.containing(endPos));
+    }
+
     private static boolean canHitRayCast(Entity entity) {
         return entity.isPickable() && entity.isAlive();
     }

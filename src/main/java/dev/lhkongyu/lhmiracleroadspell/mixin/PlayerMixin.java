@@ -8,9 +8,4 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(Player.class)
 public class PlayerMixin {
-
-    @ModifyVariable(method = "causeFoodExhaustion", at = @At("HEAD"), ordinal = 0, argsOnly = true)
-    private float causeFoodExhaustionUpdate(float amount) {
-        return amount;
-    }
 }

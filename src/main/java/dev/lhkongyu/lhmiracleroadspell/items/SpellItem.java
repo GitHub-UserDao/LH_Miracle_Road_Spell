@@ -1,32 +1,15 @@
 package dev.lhkongyu.lhmiracleroadspell.items;
 
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.ReleaseFlamesSpellTool;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.annihilatorMeteor.AnnihilatorMeteorProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.bigFireball.BigFireballProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.blazeBomb.BlazeBombProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.blazePurification.BlazePurification;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.burningFlames.BurningFlamesProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.destructionFlame.DestructionFlameProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.evilGodFlame.EvilGodFlameProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.fireball.FireballProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flameDevouring.FlameDevouring;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flameDevouring.FlameDevouringProjectile;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.flamePower.FlamePower;
-import dev.lhkongyu.lhmiracleroadspell.entity.spell.flames.ignitesFire.IgnitesFire;
-import dev.lhkongyu.lhmiracleroadspell.tool.LHMiracleRoadSpellTool;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.ReleaseFlamesSpellTool;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.flameDevouring.FlameDevouring;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.flamePower.FlamePower;
+import dev.lhkongyu.lhmiracleroadspell.spell.projectile.flames.ignitesFire.IgnitesFire;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 
 public class SpellItem extends Item {
     public SpellItem(Properties properties) {

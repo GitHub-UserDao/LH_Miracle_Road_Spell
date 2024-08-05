@@ -1,8 +1,8 @@
 package dev.lhkongyu.lhmiracleroadspell.registry;
 
 import dev.lhkongyu.lhmiracleroadspell.LHMiracleRoadSpell;
-import dev.lhkongyu.lhmiracleroadspell.entity.effect.BurningArmorEffect;
-import dev.lhkongyu.lhmiracleroadspell.entity.effect.FlamePowerEffect;
+import dev.lhkongyu.lhmiracleroadspell.effect.BurningArmorEffect;
+import dev.lhkongyu.lhmiracleroadspell.effect.FlamePowerEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
